@@ -1,0 +1,4 @@
+# Order Service
+spring:
+  application:
+    name: OrderService

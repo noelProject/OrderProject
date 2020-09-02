@@ -1,0 +1,13 @@
+# Active Profile Configuration
+spring:
+  profiles:
+    active: dev
+    
+# Swagger Configuration
+api:
+  contact: 
+    name: DreamPlus
+    url: https://dreamplus.com
+    email: enquire@dreamplus.com
+  title: Sales Order Management System
+  version: 1.0

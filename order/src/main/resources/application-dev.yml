@@ -1,0 +1,85 @@
+# Development Configuration
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:h2:mem:SalesOrderDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    initialization-mode: EMBEDDED
+    platform: h2
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: true
+        web-allow-others: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+
+# Eureak - Discovery Configuration
+eureka:
+  instance: 
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 10
+  client:
+    enabled: true
+    region: default
+    service-url:
+      defaultZone: http://localhost:9020/eureka
+
+# Feign Client with Hystrix
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types:
+      - text/xml, application/xml, application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+## Actuator
+#management:
+#  endpoint:
+#    health:
+#      enabled: true
+#      show-details: always
+#    info:
+#      enabled: true
+#    loggers:
+#      enabled: true
+#    metrics:
+#      enabled: true
+#  endpoints:
+#    web:
+#      base-path: /actuator/
+#      exposure:
+#        include: '*'
+
+# Filter
+gui:
+  protocol: http
+  host: localhost
+  port: 3000
+  
+# Dev Setup
+server:
+  servlet:
+    context-path: /order
+  port: 9090
+  
+# Logging
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+    com:
+      sales:
+        order: DEBUG

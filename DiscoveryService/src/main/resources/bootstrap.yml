@@ -1,0 +1,4 @@
+# Discovery Service
+spring:
+  application:
+    name: DiscoveryService
