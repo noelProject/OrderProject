@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.sales.order.constants.ApplicationConstants;
 
@@ -30,11 +31,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Swagger configuration
  */
+
 @Configuration
 @EnableWebMvc
 @EnableSwagger2
 @ComponentScan(value = ApplicationConstants.BASE_PACKAGE)
-public class OrderSwaggerConfiguration extends WebMvcConfigurationSupport {
+public class OrderSwaggerConfiguration implements WebMvcConfigurer{
 
    @Value("${api.contact.name}")
    private String contactName;
